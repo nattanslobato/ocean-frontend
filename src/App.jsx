@@ -6,6 +6,7 @@ function App() {
   const item1 = {
     name: "Rick Sanchez",
     imageUrl: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+
     
   }
   const item2 = {
@@ -27,6 +28,7 @@ function App() {
 
   const items = [item1, item2, item3, item4]
 
+  
   return (
     <>
       {items.map(function(element){
