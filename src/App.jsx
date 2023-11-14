@@ -33,9 +33,11 @@ function App() {
   
   return (
     <>
+    <div className="cards">
       {items.map(function(element){
         return <Card item={element}/>
       })}
+    </div>
     </>
   )
 }
