@@ -4,32 +4,6 @@ import Card from './components/Card/Card.jsx';
 
 function App() {
 
-  const item1 = {
-    name: "Rick Sanchez",
-    imageUrl: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-    tags: ["Status: Vivo", "Espécie: Humana", "Origem: Terra C-137"]
-
-  }
-  const item2 = {
-    name: "Morty Smith",
-    imageUrl: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-    tags: ["Status: Vivo", "Espécie: Humana", "Origem: Terra C-137"]
-    
-  }
-  const item3 = {
-    name: "Summer Smith",
-    imageUrl: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
-    tags: ["qualquer coisa"]
-    
-  }
-
-  const item4 = {
-    name: "Beth Smith",
-    imageUrl: "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
-    
-  }
-
-  //const items = [item1, item2, item3, item4]
   const [items, setItems] = useState([])
   
   async function carregarDadosApi(){
@@ -37,7 +11,20 @@ function App() {
 
     const response = await fetch(apiUrl)
     const body = await response.json()
-    setItems(body.results)
+    const results = body.results.map(function(element){
+      return {
+        name: element.name,
+        image: element.image,
+        tags: [
+          `Status: ${element.status}`,
+          `Specie: ${element.species}`,
+          `Origin: ${element.origin.name}`
+        ]
+      }
+    })
+
+
+    setItems(results)
   }
 
   useEffect(function(){
